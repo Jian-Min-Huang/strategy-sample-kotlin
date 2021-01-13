@@ -1,3 +1,5 @@
+import kotlin.math.min
+
 class Cart {
     fun shippingFee(shipper: String, length: Double, width: Double, height: Double, weight: Double): Double {
         when (shipper) {
@@ -20,7 +22,7 @@ class Cart {
                 val feeByWeight = 80 + weight * 10
                 val size = length * width * height
                 val feeBySize = size * 0.00002 * 1100
-                return if (feeByWeight < feeBySize) feeByWeight else feeBySize
+                return min(feeByWeight, feeBySize)
             }
             else -> {
                 throw IllegalArgumentException("shipper not exist")

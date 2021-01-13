@@ -9,37 +9,37 @@ class CartTest {
 
     @Test
     fun `black cat with light weight`() {
-        val shippingFee = cart.shippingFee(blackCat, 30.0, 20.0, 10.0, 5.0)
+        val shippingFee = cart.shippingFee(blackCat, Product(30.0, 20.0, 10.0, 5.0))
         feeShouldBe(150.0, shippingFee)
     }
 
     @Test
     fun `black cat with heavy weight`() {
-        val shippingFee = cart.shippingFee(blackCat, 30.0, 20.0, 10.0, 50.0)
+        val shippingFee = cart.shippingFee(blackCat, Product(30.0, 20.0, 10.0, 50.0))
         feeShouldBe(500.0, shippingFee)
     }
 
     @Test
     fun `hshinchu with small size`() {
-        val shippingFee = cart.shippingFee(hsinchu, 30.0, 20.0, 10.0, 50.0)
+        val shippingFee = cart.shippingFee(hsinchu, Product(30.0, 20.0, 10.0, 50.0))
         feeShouldBe(144.0, shippingFee)
     }
 
     @Test
     fun `hshinchu with huge size`() {
-        val shippingFee = cart.shippingFee(hsinchu, 100.0, 20.0, 10.0, 50.0)
+        val shippingFee = cart.shippingFee(hsinchu, Product(100.0, 20.0, 10.0, 50.0))
         feeShouldBe(480.0, shippingFee)
     }
 
     @Test
     fun `post office by weight`() {
-        val shippingFee = cart.shippingFee(postOffice, 100.0, 20.0, 10.0, 3.0)
+        val shippingFee = cart.shippingFee(postOffice, Product(100.0, 20.0, 10.0, 3.0))
         feeShouldBe(110.0, shippingFee)
     }
 
     @Test
     fun `post office by size`() {
-        val shippingFee = cart.shippingFee(postOffice, 100.0, 20.0, 10.0, 300.0)
+        val shippingFee = cart.shippingFee(postOffice, Product(100.0, 20.0, 10.0, 300.0))
         feeShouldBe(440.0, shippingFee)
     }
 

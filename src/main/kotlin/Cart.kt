@@ -11,17 +11,15 @@ class Cart {
                 }
             }
             "hsinchu" -> {
-                val size = product.length * product.width * product.height
                 if (product.length > 100 || product.width > 100 || product.height > 100) {
-                    return size * 0.00002 * 1100 + 500;
+                    return product.getSize() * 0.00002 * 1100 + 500;
                 } else {
-                    return size * 0.00002 * 1200;
+                    return product.getSize() * 0.00002 * 1200;
                 }
             }
             "post office" -> {
                 val feeByWeight = 80 + product.weight * 10
-                val size = product.length * product.width * product.height
-                val feeBySize = size * 0.00002 * 1100
+                val feeBySize = product.getSize() * 0.00002 * 1100
                 return min(feeByWeight, feeBySize)
             }
             else -> {

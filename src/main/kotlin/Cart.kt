@@ -1,24 +1,15 @@
 class Cart {
+    var shippers = mapOf<String, Shipper>(
+        "black cat" to BlackCat(),
+        "hsinchu" to Hsinchu(),
+        "post office" to PostOffice(),
+    )
+
     fun shippingFee(shipperName: String, product: Product): Double {
-        return getShipper(shipperName).calculateFee(product)
+        return getShipper(shipperName)!!.calculateFee(product)
     }
 
-    private fun getShipper(shipperName: String): Shipper {
-        var shipper: Shipper
-        when (shipperName) {
-            "black cat" -> {
-                shipper = BlackCat()
-            }
-            "hsinchu" -> {
-                shipper = Hsinchu()
-            }
-            "post office" -> {
-                shipper = PostOffice()
-            }
-            else -> {
-                throw IllegalArgumentException("shipper not exist")
-            }
-        }
-        return shipper
+    private fun getShipper(shipperName: String): Shipper? {
+        return shippers[shipperName]
     }
 }

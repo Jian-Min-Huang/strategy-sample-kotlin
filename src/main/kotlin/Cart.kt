@@ -1,17 +1,18 @@
 class Cart {
-    fun shippingFee(shipper: String, product: Product): Double {
-        when (shipper) {
+    fun shippingFee(shipperName: String, product: Product): Double {
+        var shipper: Shipper
+        when (shipperName) {
             "black cat" -> {
-                val blackCat = BlackCat()
-                return blackCat.calculateFee(product)
+                shipper = BlackCat()
+                return shipper.calculateFee(product)
             }
             "hsinchu" -> {
-                val hsinchu = Hsinchu()
-                return hsinchu.calculateFee(product)
+                shipper = Hsinchu()
+                return shipper.calculateFee(product)
             }
             "post office" -> {
-                val postOffice = PostOffice()
-                return postOffice.calculateFee(product)
+                shipper = PostOffice()
+                return shipper.calculateFee(product)
             }
             else -> {
                 throw IllegalArgumentException("shipper not exist")
